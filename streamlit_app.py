@@ -26,7 +26,7 @@ with st.container():
 
     # Title with Emoji
     st.markdown(
-        "<h1 style='text-align: center; color: #1F4E79;'>💬 Mr Hurting - Your Negotiation Partner</h1>",
+        "<h1 style='text-align: center; color: #1F4E79;'>💬 Empa - Your Reflection Partner</h1>",
         unsafe_allow_html=True
     )
 
@@ -35,7 +35,7 @@ with st.container():
 
     # Description with larger font and color
     st.markdown(
-        "<h3 style='text-align: center; color: #1F4E79;'>This Chatbot will help you to train your negotiation skills.</h3>",
+        "<h3 style='text-align: center; color: #1F4E79;'>I will help you reflect.</h3>",
         unsafe_allow_html=True
     )
 
