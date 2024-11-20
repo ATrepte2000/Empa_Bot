@@ -40,25 +40,31 @@ with st.container():
     )
 
     st.markdown(
-        "<p style='text-align: center; font-size: 18px;'>Read the role card provided below and adapt to your role. The Chatbot will play the role of Mr. Hurting.</p>",
+        "<p style='text-align: center; font-size: 18px;'>Get informed about some Reflection Theory.</p>",
         unsafe_allow_html=True
     )
 
     # Role card in an expandable section
-    with st.expander("📝 Show Your Role Card"):
+    with st.expander("📝 The Gibbs Reflection Cycle"):
         st.write("""
-        **Your Role Card:**  
-        The company Zusetzer (located only 50 km away from your place of business) has been supplying the chemical additive 435 in 25 kg containers for 5 years because it is easier to handle. Suddenly the company is complaining about impurities in the process. Previously there were no such defects. The last delivery consisted of 100 buckets of 25 kg, 6,- EUR/kg. In the last process, 25 buckets from the last delivery were used at the same time.
+        The Gibbs Reflective Cycle is a framework for systematic reflection on experiences, developed by Graham Gibbs in 1988. It aims to help individuals learn from situations and enhance their personal or professional practices.
+        The cycle comprises six stages:
 
-        Since you were only able to neutralize the impurities that you detected after filling by purchasing and adding the brightener Blendi, you incurred additional costs of 10% of the purchase price and treatment costs, the amount of which was stated by your production department to be EUR 4,500. Of this, EUR 1,200 are wages, the rest relates to cleaning the system. The only approved competitor, Chemie AG, charges 15 % more than Zusetzer because it is 300 km away from your place of business and has to charge higher freight costs.
+Description: What happened? — Provide an objective account of the event without judgments.
 
-        You occupy 20% of Zusetzer's capacity with your orders.  
-        Your annual turnover is approx. 1,200 buckets of 25 kg each, you cannot process larger units!  
-        **Goal:**  
-        The quality must return to its former state.  
-        You must achieve reimbursement of the additional price and treatment costs.  
-        The remaining stock quantity must be exchanged for the old quality.
-        """)
+Feelings: What were you thinking and feeling? — Reflect on your emotions and thoughts during the experience.
+
+Evaluation: What was good and bad about the experience? — Assess the positive and negative aspects.
+
+Analysis: Why did things happen this way? — Explore the reasons behind the outcomes, considering internal and external factors.
+
+Conclusion: What else could you have done? — Summarize what you've learned and how you might have acted differently.
+
+Action Plan: If it arose again, what would you do? — Develop a strategy for handling similar situations in the future.
+
+This model encourages self-reflection and continuous learning, promoting growth and improvement in various fields such as education, healthcare, and management.
+
+ """)
 
     # Prompt to start the conversation
     st.markdown("<hr>", unsafe_allow_html=True)
