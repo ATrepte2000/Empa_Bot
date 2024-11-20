@@ -4,7 +4,7 @@ import openai
 
 
 # Configure page layout
-st.set_page_config(page_title="Empa - Your Reflection Partner", page_icon="💬", layout="centered")
+st.set_page_config(page_title="Your Reflection Partner", page_icon="💬", layout="centered")
 
 
 # Transparent background for the content
