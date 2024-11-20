@@ -26,7 +26,7 @@ with st.container():
 
     # Title with Emoji
     st.markdown(
-        "<h1 style='text-align: center; color: #1F4E79;'>💬 Empa - Your Reflection Partner</h1>",
+        "<h1 style='text-align: center; color: #1F4E79;'>💬 Your Reflection Partner</h1>",
         unsafe_allow_html=True
     )
 
