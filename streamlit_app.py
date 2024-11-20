@@ -69,7 +69,7 @@ This model encourages self-reflection and continuous learning, promoting growth 
     # Prompt to start the conversation
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown(
-        "<h3 style='text-align: center;'>Start your Refelction Journey here:</h3>",
+        "<h3 style='text-align: center;'>Start your Reflection Journey here:</h3>",
         unsafe_allow_html=True
     )
 
