@@ -211,19 +211,50 @@ with open(conversation_file, 'w') as f:
         if message['role'] != 'system':
             f.write(f"{message['role'].capitalize()}: {message['content']}\n\n")
 
+# ... Rest deines Codes ...
 
-# Füge diesen Code an einer geeigneten Stelle in deiner App hinzu, z.B. am Ende
+# Initialisiere den Sitzungszustand nur beim ersten Start
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "system", "content": bot_instructions}]
 
-# Konversation als Text zusammenfassen
+# Zeige bisherige Nachrichten an
+# ... (dein Code zum Anzeigen der Nachrichten)
+
+# Chat-Eingabefeld für Benutzernachrichten
+# ... (dein Code für die Chat-Eingabe)
+
+# Speichere die Konversation und lade sie zu GitHub hoch
+# Erstelle einen Ordner zum Speichern der Konversationen, falls nicht vorhanden
+if not os.path.exists('conversations'):
+    os.makedirs('conversations')
+
+# Generiere einen eindeutigen Dateinamen für jede Sitzung
+session_id = st.session_state.get('session_id', None)
+if session_id is None:
+    import uuid
+    session_id = str(uuid.uuid4())
+    st.session_state['session_id'] = session_id
+
+# Pfad zur Konversationsdatei
+conversation_file = f'conversations/conversation_{session_id}.txt'
+
+# Speichere die Konversation in der Datei
 conversation_text = ""
 for message in st.session_state.messages:
     if message['role'] != 'system':
         conversation_text += f"{message['role'].capitalize()}: {message['content']}\n\n"
+
+with open(conversation_file, 'w') as f:
+    f.write(conversation_text)
+
+# Lade die Konversation zu GitHub hoch
+upload_to_github(conversation_file, conversation_text)
 
 # Download-Button anzeigen
 st.download_button(
     label="📥 Konversation herunterladen",
     data=conversation_text,
     file_name='konversation.txt',
-    mime='text/plain'
+    mime='text/plain',
+    key='download_button_conversation'  # Eindeutiger Schlüssel hinzufügen
 )
