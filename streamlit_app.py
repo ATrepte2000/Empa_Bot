@@ -182,31 +182,62 @@ if user_input := st.chat_input("..."):
         st.error("Ein Fehler ist aufgetreten. Bitte überprüfe die API-Konfiguration oder versuche es später erneut.")
         st.write(e)
 
-import streamlit as st
-import openai
+#Zusatz Code zum Speichern der Conversationen
 import json
 import os
+import requests
+import base64
 
 
-# Erstelle einen Ordner zum Speichern der Konversationen, falls nicht vorhanden
-if not os.path.exists('conversations'):
-    os.makedirs('conversations')
+# Definiere die Funktion upload_to_github
+def upload_to_github(file_path, content):
+    github_username = st.secrets["github"]["username"]
+    github_token = st.secrets["github"]["token"]
+    repo_name = st.secrets["github"]["repo_name"]
 
-# Generiere einen eindeutigen Dateinamen für jede Sitzung
-session_id = st.session_state.get('session_id', None)
-if session_id is None:
-    import uuid
-    session_id = str(uuid.uuid4())
-    st.session_state['session_id'] = session_id
+    # GitHub API URLs
+    api_url = f"https://api.github.com/repos/{github_username}/{repo_name}/contents/{file_path}"
 
-# Pfad zur Konversationsdatei
-conversation_file = f'conversations/conversation_{session_id}.txt'
+    # Header mit Authentifizierung
+    headers = {
+        "Authorization": f"token {github_token}"
+    }
 
-# Speichere die Konversation in der Datei
-with open(conversation_file, 'w') as f:
-    for message in st.session_state.messages:
-        if message['role'] != 'system':
-            f.write(f"{message['role'].capitalize()}: {message['content']}\n\n")
+    # Prüfe, ob die Datei bereits existiert
+    response = requests.get(api_url, headers=headers)
+    if response.status_code == 200:
+        # Datei existiert, hole die sha
+        file_info = response.json()
+        sha = file_info['sha']
+    else:
+        # Datei existiert nicht
+        sha = None
+
+    # Inhalte in Base64 kodieren
+    encoded_content = base64.b64encode(content.encode('utf-8')).decode('utf-8')
+
+    # Nachricht für den Commit
+    commit_message = f"Add {file_path}"
+
+    # Payload für die API-Anfrage
+    data = {
+        "message": commit_message,
+        "content": encoded_content,
+        "branch": "main"  # Passe den Branch-Namen an, falls erforderlich
+    }
+
+    # Füge die sha hinzu, wenn die Datei existiert
+    if sha:
+        data["sha"] = sha
+
+    # API-Anfrage zum Erstellen oder Aktualisieren der Datei
+    response = requests.put(api_url, headers=headers, data=json.dumps(data))
+
+    if response.status_code in [200, 201]:
+        st.success(f"Ihre Konversation wir in GitHub gespeichert: {file_path}")
+    else:
+        st.error("Fehler beim Hochladen der Konversation zu GitHub.")
+        st.write(response.json())
 
 # ... Rest deines Codes ...
 
@@ -222,8 +253,8 @@ if "messages" not in st.session_state:
 
 # Speichere die Konversation und lade sie zu GitHub hoch
 # Erstelle einen Ordner zum Speichern der Konversationen, falls nicht vorhanden
-if not os.path.exists('conversations1'):
-    os.makedirs('conversations1')
+if not os.path.exists('conversations'):
+    os.makedirs('conversations')
 
 # Generiere einen eindeutigen Dateinamen für jede Sitzung
 session_id = st.session_state.get('session_id', None)
@@ -233,7 +264,7 @@ if session_id is None:
     st.session_state['session_id'] = session_id
 
 # Pfad zur Konversationsdatei
-conversation_file = f'conversations1/conversation_{session_id}.txt'
+conversation_file = f'conversations/conversation_{session_id}.txt'
 
 # Speichere die Konversation in der Datei
 conversation_text = ""
@@ -255,3 +286,5 @@ st.download_button(
     mime='text/plain',
     key='download_button_conversation'  # Eindeutiger Schlüssel hinzufügen
 )
+
+
