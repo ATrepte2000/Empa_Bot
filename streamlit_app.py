@@ -187,9 +187,6 @@ import openai
 import json
 import os
 
-# ... Dein bisheriger Code ...
-
-# Füge diesen Code am Ende deiner Datei hinzu, nachdem die Antwort des Chatbots angezeigt wurde
 
 # Erstelle einen Ordner zum Speichern der Konversationen, falls nicht vorhanden
 if not os.path.exists('conversations'):
