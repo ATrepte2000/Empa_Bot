@@ -1,0 +1,6 @@
+User: Hallo 
+
+Assistant: Hallo! Schön, dich zu treffen! Ich bin hier, um dir zu helfen, über deine Lernfortschritte nachzudenken und zu reflektieren. Lass uns gemeinsam herausfinden, was du aus deinen Erfahrungen lernen kannst. 
+
+Kannst du mir erzählen, über welches Ereignis oder welche Erfahrung du reflektieren möchtest?
+
