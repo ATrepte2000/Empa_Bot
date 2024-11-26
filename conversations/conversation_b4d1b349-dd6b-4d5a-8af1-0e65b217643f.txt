@@ -1,0 +1,4 @@
+User: hello how are you 
+
+Assistant: Hello! I'm doing well, thank you for asking. I'm here to help you reflect on your learning progress. My role is to guide you through a series of questions that will help you think about your experiences and what you've learned from them. Are you ready to get started?
+
