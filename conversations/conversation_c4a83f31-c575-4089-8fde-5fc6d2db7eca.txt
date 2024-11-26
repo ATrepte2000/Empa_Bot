@@ -4,3 +4,7 @@ Assistant: Hallo! Schön, dich zu treffen! Ich bin hier, um dir zu helfen, über
 
 Kannst du mir erzählen, über welches Ereignis oder welche Erfahrung du reflektieren möchtest?
 
+User: Ich habe echt ein Problem mich zu konzentrieren in letzter Zeit 
+
+Assistant: Das klingt herausfordernd. Vielen Dank, dass du das mit mir teilst. Kannst du mir genauer beschreiben, was passiert ist, als du versucht hast, dich zu konzentrieren? Was genau hat dir Schwierigkeiten bereitet?
+
